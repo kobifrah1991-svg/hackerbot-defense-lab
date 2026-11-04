@@ -19,7 +19,26 @@ function loadState() {
 }
 
 function saveState(state) {
+  state.updatedAt = Date.now();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  if (window.CloudSync) window.CloudSync.push(state);
+}
+
+/* daily streak (separate key, backward compatible) */
+function touchStreak() {
+  const k = 'hackerbot_defense_streak';
+  const today = new Date().toISOString().slice(0, 10);
+  let s; try { s = JSON.parse(localStorage.getItem(k)) || {}; } catch { s = {}; }
+  if (s.last !== today) {
+    const y = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+    s.count = s.last === y ? (s.count || 0) + 1 : 1;
+    s.best = Math.max(s.best || 0, s.count); s.last = today;
+    localStorage.setItem(k, JSON.stringify(s));
+  }
+  return s;
+}
+function replaceState(remote) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
 }
 
 function xpForLevel(level) {
@@ -86,5 +105,8 @@ window.DefenseStorage = {
   saveRoomScore,
   isRoomUnlocked,
   resetProgress,
-  xpForLevel
+  xpForLevel,
+  touchStreak,
+  loadState,
+  replaceState
 };

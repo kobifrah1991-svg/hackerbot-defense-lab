@@ -34,7 +34,7 @@
       <h3>${LANG==='en'?r.titleEn:r.title}</h3><div class="thm-en">${LANG==='en'?r.title:r.titleEn}</div>
       <p>${r.desc}</p>
       <div class="thm-tags">${(r.tags || []).map(t => `<span>#${t}</span>`).join('')}</div>
-      <div class="thm-foot"><span class="diff-badge ${r.difficulty}">${t(r.difficulty)}</span><span>⏱ ${r.time || 10} ${t('min')}</span><span class="room-xp">${r.xp} XP</span>${sc != null ? `<span>ציון ${sc}</span>` : ''}</div>
+      <div class="thm-foot"><span class="diff-badge ${r.difficulty}">${t(r.difficulty)}</span><span>⏱ ${r.time || 10} ${t('min')}</span><span class="room-xp">${r.xp} XP</span>${sc != null ? `<span>${LANG==="en"?"Score":"ציון"} ${sc}</span>` : ''}</div>
       <div class="thm-progress"><div style="width:${d ? 100 : sc ? sc : 0}%"></div></div></a>`;
   }
 

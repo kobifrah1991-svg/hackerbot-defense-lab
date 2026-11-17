@@ -1,5 +1,7 @@
 # HackerBot Defense Lab · מעבדת הגנה
 
+**Contact · יצירת קשר:** [scitedra.labs@gmail.com](mailto:scitedra.labs@gmail.com)
+
 אימון אבטחת מידע **הגנתי בלבד** בעברית — חדרי תרגול אינטראקטיביים עם סימולציות גרפיות, XP, רמות והתקדמות (בהשראת UX של חדרי למידה כמו TryHackMe, בלי מעבדות תקיפה).
 
 ## איך לפתוח
